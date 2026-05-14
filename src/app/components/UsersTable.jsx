@@ -6,6 +6,11 @@ import React from 'react';
 
 const UsersTable = ({ users, deleteUserAction }) => {
 
+
+    const handleDelete = async(userId) => {
+        await deleteUserAction(userId);
+    }
+
    
 
     return (
@@ -51,7 +56,7 @@ const UsersTable = ({ users, deleteUserAction }) => {
                                                         <Button slot="close" variant="tertiary">
                                                             Cancel
                                                         </Button>
-                                                        <Button slot="close"
+                                                        <Button onClick={() => handleDelete(user._id)} slot="close"
                                                              variant="danger">
                                                             Confirm Delete
                                                         </Button>
