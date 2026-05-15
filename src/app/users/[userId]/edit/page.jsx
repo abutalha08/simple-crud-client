@@ -8,19 +8,16 @@ const UserEditPage = async ({ params }) => {
     const user = await getUserById(userId);
     console.log('editing user', user);
 
-    // const updateUserWrapper = async (formData) => {
-    //     'use server';
-    //     return updateUser(userId, formData);
-    // }
+    const updateUserWrapper = async (formData) => {
+        'use server';
+        return updateUser(userId, formData);
+    }
 
-
-    // action={updateUserWrapper}
-    
     return (
         <div>
             <h2>Editing User: {user?.name}</h2>
             <div className='w-1/2 mx-auto'>
-                <form  className="flex flex-col gap-4">
+                <form action={updateUserWrapper} className="flex flex-col gap-4">
                     <TextField className="w-full" name="name" defaultValue={user?.name} type="text">
                         <Label>Name</Label>
                         <Input placeholder="Enter your name" />
